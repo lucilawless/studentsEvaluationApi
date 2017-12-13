@@ -11,22 +11,22 @@ router.get('/batches', (req, res, next) => {
     // Throw a 500 error if something goes wrong
     .catch((error) => next(error))
   })
-  // .get('/batches/:id', (req, res, next) => {
-  //   const id = req.params.id
-  //   batch.findById(id)
-  //     .then((batch) => {
-  //       if (!batch) { return next() }
-  //       res.json(batch)
-  //     })
-  //     .catch((error) => next(error))
-  // })
-  // .post('/batches', passport.authorize('jwt', { session: false }), (req, res, next) => {
-  //   let newbatch = req.body
-  //   newbatch.authorId = req.account._id
-  //
-  //   batch.create(newbatch)
-  //     .then((batch) => res.json(batch))
-  //     .catch((error) => next(error))
-  // })
+  .get('/batches/:id', (req, res, next) => {
+    const id = req.params.id
+    batch.findById(id)
+      .then((batch) => {
+        if (!batch) { return next() }
+        res.json(batch)
+      })
+      .catch((error) => next(error))
+  })
+  .post('/batches', passport.authorize('jwt', { session: false }), (req, res, next) => {
+    let newbatch = req.body
+    newbatch.authorId = req.account._id
+
+    batch.create(newbatch)
+      .then((batch) => res.json(batch))
+      .catch((error) => next(error))
+  })
 
 module.exports = router
