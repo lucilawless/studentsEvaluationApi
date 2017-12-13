@@ -1,17 +1,12 @@
 [
   {
     "batchNumber": 12,
-    "studentsCount": 10,
-    "photo": "http://cd.sseu.re/mixed-seafood-paella.jpeg",
-    "startedAt": "12-12-2012",
-    "endAt": "25-02-2013"
+    "startedAt": "2011-12-12",
+    "endAt": "2013-02-02"
   },
-
   {
     "batchNumber": 13,
-    "studentsCount": 9,
-    "photo": "http://cd.sseu.re/mixed-seafood-paella.jpeg",
-    "startedAt": "13-12-2012",
-    "endAt": "26-02-2013"
+    "startedAt": "2015-02-01",
+    "endAt": "2015-03-01"
   }
 ]
