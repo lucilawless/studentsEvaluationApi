@@ -6,7 +6,7 @@ const createUrl = (path) => {
   return `${process.env.HOST || `http://localhost:${process.env.PORT || 3030}`}${path}`
 }
 
-const createbatches = (token) => {
+const createBatches = (token) => {
   return batches.map((batch) => {
     return request
       .post(createUrl('/batches'))

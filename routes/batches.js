@@ -20,12 +20,29 @@ router.get('/batches', (req, res, next) => {
       })
       .catch((error) => next(error))
   })
-  .post('/batches', passport.authorize('jwt', { session: false }), (req, res, next) => {
-    let newbatch = req.body
-    newbatch.authorId = req.account._id
+  //.post('/batches', passport.authorize('jwt', { session: false }), (req, res, next) => {
+  .post('/batches', (req, res, next) => {
+    let newBatch = req.body
+    // newBatch.authorId = req.account._id
 
-    Batch.create(newbatch)
+    Batch.create(newBatch)
       .then((batch) => res.json(batch))
+      .catch((error) => next(error))
+  })
+  .put('/batches/:id', (req, res, next) => {
+    const id = req.params.id
+    Batch.findById(id)
+      .then((batch) => {
+        if (!batch) { return next() }
+
+        const newData = req.body
+
+        recipe.update(newData)
+          .then((updatedRecipe) => {
+            res.json(updatedRecipe)
+          })
+          .catch((error) => next(error))
+      })
       .catch((error) => next(error))
   })
 
